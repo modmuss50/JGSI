@@ -69,4 +69,18 @@ The auth token is currently ignored, this will be implemented in the api soon.
 
 ## Using with gradle
 
-TODO once on maven
+```groovy
+repositories {
+    mavenCentral()
+	maven {
+		name "modmuss50"
+		url 'http://maven.modmuss50.me'
+	}
+}
+
+dependencies {
+    compile 'me.modmuss50:jgsi:+'
+}
+```
+
+Add my maven to your repositories and then depend on jgsi. It will pull in the extra deps as required
