@@ -2,6 +2,7 @@ plugins {
     id 'java'
 	id 'maven'
 	id 'maven-publish'
+	id 'io.franzbecker.gradle-lombok' version '2.0'
 }
 
 group 'me.modmuss50'
@@ -20,10 +21,16 @@ repositories {
 	}
 }
 
+lombok {
+	version = "1.18.4"
+	sha256 = "39f3922deb679b1852af519eb227157ef2dd0a21eec3542c8ce1b45f2df39742"
+}
+
 dependencies {
 	compile 'io.javalin:javalin:2.6.0'
 	compile 'com.google.code.gson:gson:2.8.5'
 	compile 'org.checkerframework:checker-qual:2.6.0'
+	runtimeOnly 'org.slf4j:slf4j-simple:1.7.25'
 }
 
 
@@ -33,6 +40,16 @@ publishing {
 			groupId 'me.modmuss50'
 			artifactId "jgsi"
 			from components.java
+
+			//We dont want slf4j-simple to be put in the maven pom, this is up to the dev
+			pom.withXml {
+				Node pomNode = asNode()
+				pomNode.dependencies.'*'.findAll() {
+					it.artifactId.text() == 'slf4j-simple'
+				}.each() {
+					it.parent().remove(it)
+				}
+			}
 		}
 	}
 	repositories {

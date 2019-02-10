@@ -12,7 +12,6 @@ import java.util.function.Predicate;
 public interface GameStateIntegration {
 
 	/**
-	 *
 	 * This is used to get a new instance of GameStateIntegration
 	 *
 	 * @return a new GameStateIntegration
@@ -22,7 +21,6 @@ public interface GameStateIntegration {
 	}
 
 	/**
-	 *
 	 * This can be used to set the listening port of the http server the default is (8181)
 	 *
 	 * @param port the port of the server
@@ -31,7 +29,6 @@ public interface GameStateIntegration {
 	GameStateIntegration setPort(int port);
 
 	/**
-	 *
 	 * This can be used to validate the auth, this should be used in production otherwise anyone could send bogus data
 	 *
 	 * @param authPredicate a Predicate that should only return true if the token in Auth is valid
@@ -40,7 +37,6 @@ public interface GameStateIntegration {
 	GameStateIntegration validateAuth(Predicate<Auth> authPredicate);
 
 	/**
-	 *
 	 * This starts the http server
 	 *
 	 * @return GameStateIntegration
@@ -49,7 +45,6 @@ public interface GameStateIntegration {
 	GameStateIntegration start() throws IOException;
 
 	/**
-	 *
 	 * This is used to register a consumer to handle the GameState each time the game sends the data
 	 *
 	 * @param state a consumer that handles GameState
@@ -58,7 +53,6 @@ public interface GameStateIntegration {
 	GameStateIntegration onUpdate(Consumer<GameState> state);
 
 	/**
-	 *
 	 * This is used to get the raw json string from the game. This can be used for testing, or for passing on this data to another application
 	 *
 	 * @param rawPayload the raw json string
@@ -67,7 +61,6 @@ public interface GameStateIntegration {
 	GameStateIntegration onUpdateRaw(Consumer<String> rawPayload);
 
 	/**
-	 *
 	 * You can use this to get the last game state, this can be null
 	 *
 	 * @return the last sent GameSate

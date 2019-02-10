@@ -1,53 +1,77 @@
 package me.modmuss50.jgsi.api.models;
 
+import com.google.gson.annotations.SerializedName;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
+
 import java.util.Map;
 
+@Getter
+@ToString
+@EqualsAndHashCode
 public class Player {
 
-	public long steamid;
-	public String name;
-	public int observer_slot;
-	public String team;
-	public String activity;
-	public Sate state;
-	public MatchStats match_stats;
-	public Map<String, Weapon> weapons;
-	public String position;
-	public String forward;
+	long steamid;
+	String name;
+	@SerializedName("observer_slot")
+	int observerSlot;
+	String team;
+	String activity;
+	Sate state;
+	MatchStats match_stats;
+	Map<String, Weapon> weapons;
+	String position;
+	String forward;
 
+	@Getter
+	@ToString
+	@EqualsAndHashCode
 	public class Sate {
 
-		public int health;
-		public int armor;
-		public boolean helmet;
-		public int flashed;
-		public int smoked;
-		public int burning;
-		public int money;
-		public int round_kills;
-		public int round_killhs;
-		public int round_totaldmg;
-		public int equip_value;
+		int health;
+		int armor;
+		boolean helmet;
+		int flashed;
+		int smoked;
+		int burning;
+		int money;
+		@SerializedName("round_kills")
+		int roundKills;
+		@SerializedName("round_killhs")
+		int roundHeadshots;
+		@SerializedName("round_totaldmg")
+		int roundTotalDamage;
+		int equip_value;
 	}
 
+	@Getter
+	@ToString
+	@EqualsAndHashCode
 	public class MatchStats {
 
-		public int kills;
-		public int assists;
-		public int deaths;
-		public int mvps;
-		public int score;
+		int kills;
+		int assists;
+		int deaths;
+		int mvps;
+		int score;
 	}
 
+	@Getter
+	@ToString
+	@EqualsAndHashCode
 	public class Weapon {
 
-		public String name;
-		public String paintkit;
-		public String type;
-		public int ammo_clip;
-		public int ammo_clip_max;
-		public int ammo_reserve;
-		public String state;
+		String name;
+		String paintkit;
+		String type;
+		@SerializedName("ammo_clip")
+		int ammoClip;
+		@SerializedName("ammo_clip_max")
+		int ammoClipMax;
+		@SerializedName("ammo_reserve")
+		int ammoReserve;
+		String state;
 	}
 
 }

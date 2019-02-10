@@ -1,10 +1,17 @@
 package me.modmuss50.jgsi.api.models;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
+
+@Getter
+@ToString
+@EqualsAndHashCode
 public class Provider {
 
-	public String name;
-	public int appid;
-	public int version;
-	public long steamid;
-	public int timestamp;
+	String name;
+	int appid;
+	int version;
+	long steamid;
+	int timestamp;
 }

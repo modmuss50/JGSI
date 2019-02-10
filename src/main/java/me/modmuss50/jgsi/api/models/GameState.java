@@ -1,14 +1,23 @@
 package me.modmuss50.jgsi.api.models;
 
+import com.google.gson.annotations.SerializedName;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
+
+@Getter
+@ToString
+@EqualsAndHashCode
 public class GameState {
 
-	public Provider provider;
-	public Map map;
-	public Round round;
-	public Player player;
-	public java.util.Map<Long, Player> allplayers;
-	public PhaseCountdowns phase_countdowns;
-	public java.util.Map<String, Grenade> grenades;
-	public Auth auth;
+	Provider provider;
+	Map map;
+	Round round;
+	Player player;
+	java.util.Map<Long, Player> allplayers;
+	@SerializedName("phase_countdowns")
+	PhaseCountdowns phaseCountdowns;
+	java.util.Map<String, Grenade> grenades;
+	Auth auth;
 
 }

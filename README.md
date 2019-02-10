@@ -24,7 +24,7 @@ public class JavaGameStateIntegrationTest {
 	}
 
 	private static void handle(GameState gameState){
-		System.out.println(gameState.map.name);
+		System.out.println(gameState.getMap().getName());
 	}
 
 }

@@ -1,22 +1,37 @@
 package me.modmuss50.jgsi.api.models;
 
+import com.google.gson.annotations.SerializedName;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
+
+@Getter
+@ToString
+@EqualsAndHashCode
 public class Map {
 
-	public String mode;
-	public String name;
-	public String phase;
-	public int round;
-	public Team team_ct;
-	public Team team_t;
-	public int num_matches_to_win_series;
-	public int current_spectators;
-	public int souvenirs_total;
+	String mode;
+	String name;
+	String phase;
+	int round;
+	@SerializedName("team_ct")
+	Team teamCounterTerrorist;
+	@SerializedName("team_t")
+	Team teamTerrorist;
+	int num_matches_to_win_series;
+	int current_spectators;
+	int souvenirs_total;
 
+	@Getter
+	@ToString
+	@EqualsAndHashCode
 	public class Team {
 
-		public int score;
-		public int timeouts_remaining;
-		public int matches_won_this_series;
+		int score;
+		@SerializedName("timeouts_remaining")
+		int timeoutsRemaining;
+		@SerializedName("matches_won_this_series")
+		int seriesMatchesWon;
 	}
 
 }

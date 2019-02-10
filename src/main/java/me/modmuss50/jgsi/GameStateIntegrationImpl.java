@@ -74,8 +74,8 @@ public class GameStateIntegrationImpl implements GameStateIntegration {
 		return this;
 	}
 
-	boolean isValidAuth(Auth auth){
-		if(authPredicates.isEmpty()){
+	boolean isValidAuth(Auth auth) {
+		if (authPredicates.isEmpty()) {
 			return true;
 		}
 		return authPredicates.stream().anyMatch(authPredicate -> authPredicate.test(auth));

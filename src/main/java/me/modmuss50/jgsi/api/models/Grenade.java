@@ -1,10 +1,17 @@
 package me.modmuss50.jgsi.api.models;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
+
+@Getter
+@ToString
+@EqualsAndHashCode
 public class Grenade {
 
-	public String lifetime;
-	public String effecttime;
-	public String position;
-	public String velocity;
+	String lifetime;
+	String effecttime;
+	String position;
+	String velocity;
 
 }

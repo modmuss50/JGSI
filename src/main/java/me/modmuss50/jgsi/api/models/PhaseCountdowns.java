@@ -1,8 +1,17 @@
 package me.modmuss50.jgsi.api.models;
 
+import com.google.gson.annotations.SerializedName;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
+
+@Getter
+@ToString
+@EqualsAndHashCode
 public class PhaseCountdowns {
 
-	public String phase;
-	public String phase_ends_in;
+	String phase;
+	@SerializedName("phase_ends_in")
+	String phaseEndsIn;
 
 }
