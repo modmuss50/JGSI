@@ -32,7 +32,7 @@ publishing {
 		maven(MavenPublication) {
 			groupId 'me.modmuss50'
 			artifactId "jgsi"
-			artifact (jar)
+			from components.java
 		}
 	}
 	repositories {
