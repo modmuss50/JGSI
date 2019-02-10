@@ -65,7 +65,7 @@ The following needs to be placed into a file called `gamestate_integration_java.
 }
 ```
 
-The auth token is currently ignored, this will be implemented in the api soon.
+The auth token can be validated by using `validateAuth`
 
 ## Using with gradle
 

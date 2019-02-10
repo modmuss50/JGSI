@@ -11,6 +11,8 @@ public class JavaGameStateIntegrationTest {
 		GameStateIntegration
 			.create()
 			.onUpdate(JavaGameStateIntegrationTest::handle)
+			.validateAuth(auth -> auth.token.equals("TestPassword"))
+			//.onUpdateRaw(System.out::println) //This line can be enabled to print out the raw json payload, this can be useful for testing
 			.start();
 	}
 

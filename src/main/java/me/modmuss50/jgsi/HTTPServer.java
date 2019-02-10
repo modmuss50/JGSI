@@ -25,7 +25,12 @@ class HTTPServer {
 		String body = context.body();
 		GameState gameState = GSON.fromJson(body, GameState.class);
 		if (gameState != null) {
-			gameStateIntegration.handle(gameState);
+			if(!gameStateIntegration.isValidAuth(gameState.auth)){
+				System.out.println("Forbidden connection from " + context.ip());
+				context.status(403);
+				return;
+			}
+			gameStateIntegration.handle(gameState, body);
 		}
 		context.status(200);
 
