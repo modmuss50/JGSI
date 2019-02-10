@@ -33,13 +33,20 @@ dependencies {
 	runtimeOnly 'org.slf4j:slf4j-simple:1.7.25'
 }
 
+task sourcesJar(type: Jar, dependsOn: classes) {
+	classifier = 'sources'
+	from sourceSets.main.allSource
+}
+
 
 publishing {
 	publications {
 		maven(MavenPublication) {
 			groupId 'me.modmuss50'
 			artifactId "jgsi"
+
 			from components.java
+			artifact tasks.sourcesJar
 
 			//We dont want slf4j-simple to be put in the maven pom, this is up to the dev
 			pom.withXml {
