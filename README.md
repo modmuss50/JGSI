@@ -40,7 +40,7 @@ The following needs to be placed into a file called `gamestate_integration_java.
 {
  "uri" "http://localhost:8181"
  "timeout" "5.0"
- "buffer"  "0.1"
+ "buffer"  "1"
  "throttle" "0.1"
  "heartbeat" "30.0"
  "auth"
@@ -49,18 +49,19 @@ The following needs to be placed into a file called `gamestate_integration_java.
  }
  "data"
  {
-   "provider"            "1"
-   "map"                 "1"
-   "round"               "1"
-   "player_id"           "1"
-   "allplayers_id"       "1"     
-   "player_state"        "1"      
-   "allplayers_state"    "1"      
-   "allplayers_match_stats"  "1"  
-   "allplayers_weapons"  "1"      
-   "allplayers_position" "1"      
-   "phase_countdowns"    "1"      
-   "allgrenades"    "1" 
+   "provider"            	"1"
+   "map"                 	"1"
+   "round"               	"1"
+   "player_id"           	"1"
+   "allplayers_id"       	"1"     
+   "player_state"        	"1"      
+   "allplayers_state"    	"1"      
+   "allplayers_match_stats" "1"  
+   "allplayers_weapons"  	"1"      
+   "allplayers_position" 	"1"      
+   "phase_countdowns"    	"1"      
+   "allgrenades"    		"1" 
+   "bomb" 					"1"  
  }
 }
 ```

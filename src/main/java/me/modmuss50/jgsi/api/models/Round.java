@@ -10,5 +10,6 @@ import lombok.ToString;
 public class Round {
 
 	String phase;
+	String bomb;
 
 }

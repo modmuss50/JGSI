@@ -12,7 +12,8 @@ import java.util.Map;
 @EqualsAndHashCode
 public class Player {
 
-	long steamid;
+	String steamid;
+	String clan;
 	String name;
 	@SerializedName("observer_slot")
 	int observerSlot;
@@ -32,6 +33,7 @@ public class Player {
 		int health;
 		int armor;
 		boolean helmet;
+		boolean defusekit;
 		int flashed;
 		int smoked;
 		int burning;

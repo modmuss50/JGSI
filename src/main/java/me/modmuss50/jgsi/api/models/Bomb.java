@@ -7,11 +7,10 @@ import lombok.ToString;
 @Getter
 @ToString
 @EqualsAndHashCode
-public class Provider {
+public class Bomb {
 
-	String name;
-	int appid;
-	int version;
-	String steamid;
-	int timestamp;
+	String state;
+	String position;
+	long player;
+
 }

@@ -18,6 +18,7 @@ public class GameState {
 	@SerializedName("phase_countdowns")
 	PhaseCountdowns phaseCountdowns;
 	java.util.Map<String, Grenade> grenades;
+	Bomb bomb;
 	Auth auth;
 
 }

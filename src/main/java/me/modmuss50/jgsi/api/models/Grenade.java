@@ -9,9 +9,11 @@ import lombok.ToString;
 @EqualsAndHashCode
 public class Grenade {
 
-	String lifetime;
-	String effecttime;
+	long owner;
 	String position;
 	String velocity;
+	String lifetime;
+	String type;
+	String effecttime;
 
 }
