@@ -31,6 +31,10 @@ dependencies {
 	compile 'com.google.code.gson:gson:2.8.5'
 	compile 'org.checkerframework:checker-qual:2.6.0'
 	runtimeOnly 'org.slf4j:slf4j-simple:1.7.25'
+	runtimeOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.4'
+	testCompile group: 'commons-io', name: 'commons-io', version: '2.6'
+
+
 }
 
 task sourcesJar(type: Jar, dependsOn: classes) {
