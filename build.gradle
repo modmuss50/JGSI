@@ -56,7 +56,7 @@ publishing {
 			pom.withXml {
 				Node pomNode = asNode()
 				pomNode.dependencies.'*'.findAll() {
-					it.artifactId.text() == 'slf4j-simple'
+					it.artifactId.text() == 'slf4j-simple' || it.artifactId.text() == 'lombok'
 				}.each() {
 					it.parent().remove(it)
 				}

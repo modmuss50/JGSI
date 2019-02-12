@@ -21,25 +21,28 @@ public class RoundTrackerImpl implements RoundTracker {
 		gameStateIntegration.onUpdate(this::handle);
 	}
 
-	public void handle(GameState gameState){
-		if(gameState == null || gameState.getMap() == null){
+	public void handle(GameState gameState) {
+		if (gameState == null || gameState.getMap() == null) {
 			return;
 		}
+
+		//This is done to allow for roll backs of the map, as well as it should handle the map changing
 		int currentRound = gameState.getMap().getRound();
-		if(currentRound < getCurrentRound()){
+		if (currentRound < getCurrentRound()) {
 			getRounds().forEach(round -> {
-				if(round > currentRound){
+				if (round > currentRound) {
 					roundMap.remove(round);
 				}
 			});
 		}
-		//Sets the current round to
+
+		//Sets the current round
 		roundMap.put(currentRound, gameState);
 	}
 
 	@Override
 	public GameState getRound(int round) throws IndexOutOfBoundsException {
-		if(!roundMap.containsKey(round)){
+		if (!roundMap.containsKey(round)) {
 			throw new IndexOutOfBoundsException(String.format("Round %d has not been tracked"));
 		}
 		return roundMap.get(round);

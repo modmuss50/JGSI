@@ -4,11 +4,28 @@ Java Game State Integration is a library that can be used with CSGO's gamestate 
 
 The API needs documenting, and expanding on (Im not sure ive gotten all the values that the game provides).
 
+## Using with gradle
+
+```groovy
+repositories {
+    mavenCentral()
+	maven {
+		name "modmuss50"
+		url 'http://maven.modmuss50.me'
+	}
+}
+
+dependencies {
+    compile 'me.modmuss50:jgsi:+'
+}
+```
+
+
 ## How to use
 
-```java
-package me.modmuss50.jgsi.test;
+### Basic example
 
+```java
 import me.modmuss50.jgsi.api.GameStateIntegration;
 import me.modmuss50.jgsi.api.models.GameState;
 
@@ -16,7 +33,7 @@ import java.io.IOException;
 
 public class JavaGameStateIntegrationTest {
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) {
 		GameStateIntegration
 			.create()
 			.onUpdate(JavaGameStateIntegrationTest::handle)
@@ -24,13 +41,40 @@ public class JavaGameStateIntegrationTest {
 	}
 
 	private static void handle(GameState gameState){
-		System.out.println(gameState.getMap().getName());
+		if(gameState.getMap() != null){
+			System.out.println(gameState.getMap().getName());
+		}
 	}
 
 }
 ```
 
 This is a basic example, that calls `handle` everytime the game updates the state. This test app is also included in `src/test/java`.
+
+### Round Tracker
+
+```java
+
+import me.modmuss50.jgsi.api.GameStateIntegration;
+import me.modmuss50.jgsi.api.RoundTracker;
+
+import java.io.IOException;
+
+public class JavaGameStateIntegrationRoundTrackerExample {
+
+	public static void main(String[] args) {
+		GameStateIntegration integration = GameStateIntegration.create().start();
+		RoundTracker tracker = RoundTracker.create(integration);
+	
+		tracker.streamRounds().forEach(gameState -> System.out.println("Round " + gameState.getMap().getRound()));
+		System.out.println("Current round: " + tracker.getCurrentRound());
+	}
+
+}
+```
+
+The round tracker can be used to access the GameSate of any past rounds, as well as the current round, this is useful when you want to create stats based of the history of the player stats.
+
 ## Setting up the game
 
 The following needs to be placed into a file called `gamestate_integration_java.cfg` located in `steamapps\common\Counter-Strike Global Offensive\csgo\cfg`
@@ -68,20 +112,3 @@ The following needs to be placed into a file called `gamestate_integration_java.
 
 The auth token can be validated by using `validateAuth`
 
-## Using with gradle
-
-```groovy
-repositories {
-    mavenCentral()
-	maven {
-		name "modmuss50"
-		url 'http://maven.modmuss50.me'
-	}
-}
-
-dependencies {
-    compile 'me.modmuss50:jgsi:+'
-}
-```
-
-Add my maven to your repositories and then depend on jgsi. It will pull in the extra deps as required

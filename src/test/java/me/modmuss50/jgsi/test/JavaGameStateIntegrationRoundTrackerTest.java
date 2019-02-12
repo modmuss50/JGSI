@@ -10,7 +10,7 @@ import me.modmuss50.jgsi.api.models.GameState;
 
 import java.io.IOException;
 
-//A hacky test for RoundTacker
+//A hacky test for RoundTacker that does not connect to the game, see the example on how to actually use it
 public class JavaGameStateIntegrationRoundTrackerTest {
 
 	private static Gson GSON = new GsonBuilder().setPrettyPrinting().create();
@@ -24,7 +24,7 @@ public class JavaGameStateIntegrationRoundTrackerTest {
 		tests((RoundTrackerImpl) tracker);
 	}
 
-	private static void tests(RoundTrackerImpl roundTracker){
+	private static void tests(RoundTrackerImpl roundTracker) {
 		roundTracker.handle(createFakeGameState(0));
 		roundTracker.handle(createFakeGameState(1));
 		roundTracker.handle(createFakeGameState(2));
@@ -48,8 +48,7 @@ public class JavaGameStateIntegrationRoundTrackerTest {
 		System.out.println(roundTracker.getCurrentRound());
 	}
 
-
-	private static GameState createFakeGameState(int round){
+	private static GameState createFakeGameState(int round) {
 		JsonObject object = new JsonObject();
 		JsonObject map = new JsonObject();
 		map.addProperty("round", round);
